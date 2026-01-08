@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waitlist — Private access</title>
+  <meta name="robots" content="noindex,nofollow" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --text:#f4f5f7;
+      --muted:#b7bcc7;
+      --accent:#9ad6ff;
+      --line:#232734;
+      --radius:18px;
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --max:720px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+    h1{margin:0 0 10px;font-size:clamp(24px,4vw,36px)}
+    p{margin:0;color:var(--muted)}
+    .card{
+      margin-top:24px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(35,39,52,.9);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    label{font-size:13px;color:var(--muted)}
+    input{
+      width:100%;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      margin-top:6px;
+    }
+    input:focus{
+      outline:none;
+      border-color:rgba(154,214,255,.45);
+      background:rgba(255,255,255,.06);
+    }
+    .btn{
+      margin-top:14px;
+      padding:12px 18px;
+      border-radius:14px;
+      border:1px solid rgba(154,214,255,.35);
+      background:linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
+      color:var(--text);
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn:hover{background:rgba(154,214,255,.22)}
+    .hidden{display:none}
+    .ok{color:#9affc8;font-size:14px;margin-top:10px}
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="wrap">
+
+      <!-- 🔐 PASSWORD GATE -->
+      <div id="gate" class="card">
+        <h1>Private access</h1>
+        <p>This page is restricted.</p>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="••••••••" />
+
+        <button class="btn" onclick="unlock()">Enter</button>
+      </div>
+
+      <!-- 📝 WAITLIST FORM -->
+      <div id="form" class="card hidden">
+        <h1>Waitlist — manual validation</h1>
+        <p>Fill this form for the person you want to validate.</p>
+
+        <label for="name">Name</label>
+        <input id="name" placeholder="Artist / Name" />
+
+        <label for="email" style="margin-top:10px">Email</label>
+        <input id="email" type="email" placeholder="email@example.com" />
+
+        <button class="btn" onclick="submitWaitlist()">Validate & send email</button>
+
+        <p id="success" class="ok hidden">✅ Email sent successfully.</p>
+      </div>
+
+    </div>
+  </main>
+
+<script>
+  /* 🔑 CHANGE THIS PASSWORD */
+  const WAITLIST_PASSWORD = "PLS-ACCESS-2026";
+
+  function unlock(){
+    const input = document.getElementById("password").value;
+    if(input === WAITLIST_PASSWORD){
+      document.getElementById("gate").classList.add("hidden");
+      document.getElementById("form").classList.remove("hidden");
+    } else {
+      alert("Wrong password");
+    }
+  }
+
+  function submitWaitlist(){
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+
+    if(!name || !email){
+      alert("Please fill name and email");
+      return;
+    }
+
+    /*
+      👉 ICI :
+      - appeler ton service mailing (MailerLite / API / webhook)
+      - déclencher le double opt-in
+      - tagger l’utilisateur "PLS"
+    */
+
+    console.log("WAITLIST SUBMIT:", { name, email });
+
+    document.getElementById("success").classList.remove("hidden");
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+  }
+</script>
+</body>
+</html>
