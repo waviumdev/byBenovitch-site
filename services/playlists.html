@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Playlists — By Benovitch</title>
+  <meta name="description" content="Playlists by Benovitch : approche playlists (curation, stratégie, cohérence, suivi). Sur devis. PLS : 12 playlists Spotify." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --text:#f4f5f7;
+      --muted:#b7bcc7;
+      --line:#232734;
+      --accent:#9ad6ff;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(35,39,52,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(11,12,16,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(35,39,52,.6);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+    .brand{display:flex; align-items:baseline; gap:10px; font-weight:800; letter-spacing:.4px;}
+    .brand small{color:var(--muted); font-weight:600;}
+    .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+    .menu a{
+      padding:10px 12px; border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .menu a:hover{
+      color: var(--text);
+      border-color: rgba(35,39,52,.9);
+      background: rgba(255,255,255,.03);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
+      border-color: rgba(154,214,255,.35);
+    }
+
+    /* Page head */
+    .head{padding: 24px 0 12px;}
+    .crumbs{color:var(--muted); font-size:13px;}
+    .crumbs a{color:var(--muted); text-decoration:underline; text-underline-offset:2px;}
+    h1{
+      margin: 10px 0 10px;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -.3px;
+    }
+    .lead{margin:0; color: var(--muted); max-width: 80ch; font-size: 15px;}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    .badge{
+      font-size: 13px;
+      color: var(--text);
+      border: 1px solid rgba(154,214,255,.30);
+      background: rgba(154,214,255,.07);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+    .note{margin-top: 10px; color: var(--muted); font-size: 13px;}
+
+    section{padding: 16px 0;}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .box{
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(255,255,255,.02);
+    }
+    .box h2{margin:0 0 8px; font-size: 16px;}
+    .box p{margin:0; color:var(--muted); font-size: 14px;}
+    .box ul{margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px;}
+    .box li{margin: 6px 0;}
+    .stack{display:flex; flex-direction:column; gap:12px;}
+
+    .callout{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(154,214,255,.30);
+      background: rgba(154,214,255,.06);
+      color: var(--text);
+    }
+    .callout p{margin:0; font-size: 14px;}
+    .callout small{display:block; margin-top:6px; color: var(--muted);}
+
+    .cta{
+      padding: 18px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta h3{margin:0; font-size: 18px;}
+    .cta p{margin:0; color: var(--muted); max-width: 70ch; font-size: 14px;}
+
+    footer{
+      border-top: 1px solid rgba(35,39,52,.6);
+      padding: 22px 0 30px;
+      color: var(--muted);
+    }
+    .footerGrid{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center;}
+    .footerLinks{display:flex; gap:12px; flex-wrap:wrap;}
+    .footerLinks a{color: var(--muted); padding: 8px 10px; border-radius: 12px;}
+    .footerLinks a:hover{color: var(--text); background: rgba(255,255,255,.03);}
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="By Benovitch, accueil">
+        By Benovitch <small>Music Business</small>
+      </a>
+      <nav class="menu" aria-label="Navigation">
+        <a href="/services">Services</a>
+        <a href="/pls">PLS</a>
+        <a href="/suggest">Suggestions</a>
+        <a class="btn primary" href="/contact">Demander un devis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap head">
+      <div class="crumbs">
+        <a href="/services">Services</a> <span aria-hidden="true">/</span> Playlists
+      </div>
+
+      <h1>Playlists by Benovitch</h1>
+
+      <p class="lead">
+        Une approche playlists orientée cohérence : curation, stratégie, et suivi.
+        Ce n’est pas une promesse magique — c’est un cadre pour améliorer ton placement et ta visibilité.
+      </p>
+
+      <div class="badges" aria-label="Infos">
+        <div class="badge">Sur devis</div>
+        <div class="badge">Stratégie &amp; cohérence</div>
+        <div class="badge">Suivi / itérations</div>
+      </div>
+
+      <p class="note">
+        Le devis dépend de ton contexte (catalogue, rythme de sorties, objectif) et du niveau d’accompagnement souhaité.
+      </p>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="/contact">Demander un devis</a>
+        <a class="btn" href="/pls">Voir les playlists (PLS)</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap grid">
+
+        <!-- Colonne principale -->
+        <div class="stack">
+
+          <div class="callout">
+            <p><strong>PLS :</strong> j’ai aussi un réseau de playlists Spotify (12 playlists).</p>
+            <small>Tu peux les consulter ici : /pls (covers cliquables, sans embed).</small>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn" href="/pls">Voir PLS</a>
+              <a class="btn" href="/suggest">Proposer un titre</a>
+            </div>
+          </div>
+
+          <div class="box">
+            <h2>Pour qui ?</h2>
+            <ul>
+              <li>Artistes qui veulent une stratégie de placement cohérente</li>
+              <li>Projets qui sortent régulièrement (ou veulent commencer proprement)</li>
+              <li>Besoin d’un cadre (au lieu d’envoyer partout au hasard)</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Ce que tu obtiens</h2>
+            <ul>
+              <li>Audit rapide (catalogue, positionnement, cohérence)</li>
+              <li>Recommandations concrètes (cibles, formats, timing)</li>
+              <li>Plan d’action simple (quoi faire / quand / pourquoi)</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Process</h2>
+            <ul>
+              <li><strong>1) Brief</strong> : objectif + contexte + releases</li>
+              <li><strong>2) Analyse</strong> : cohérence + opportunités</li>
+              <li><strong>3) Plan</strong> : recommandations + prochaines actions</li>
+              <li><strong>4) Suivi</strong> : itérations selon résultats</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>FAQ</h2>
+            <ul>
+              <li><strong>Tu garantis des placements ?</strong> Non. On structure pour maximiser tes chances et éviter les erreurs.</li>
+              <li><strong>Je n’ai qu’un single.</strong> OK, on adapte la stratégie.</li>
+              <li><strong>Je veux juste “envoyer un titre”.</strong> Utilise /suggest (si tu veux proposer un track).</li>
+            </ul>
+          </div>
+
+          <div class="card cta">
+            <div>
+              <h3>Tu veux cadrer ta stratégie playlists ?</h3>
+              <p>Envoie ton objectif, tes liens (Spotify), et ton planning de sorties. Je te réponds avec une proposition.</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="/contact">Demander un devis</a>
+              <a class="btn" href="/services">Tous les services</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Colonne latérale -->
+        <aside class="stack" aria-label="Infos rapides">
+          <div class="box">
+            <h2>Tarif</h2>
+            <ul>
+              <li><strong>Playlists</strong> : sur devis</li>
+              <li>Dépend du niveau d’accompagnement</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>À préparer</h2>
+            <ul>
+              <li>Liens Spotify (artiste + titres)</li>
+              <li>Objectif (visibilité / cohérence / release plan)</li>
+              <li>Planning (si tu as une date)</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Prochaine étape</h2>
+            <p>Clique sur “Demander un devis” ou passe par /suggest pour proposer un titre.</p>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="/contact" style="flex:1">Devis</a>
+              <a class="btn" href="/suggest" style="flex:1">Proposer</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footerGrid">
+      <div>
+        <strong style="color:var(--text);">By Benovitch</strong>
+        <div style="font-size:13px; margin-top:6px;">© <span id="year"></span> — Tous droits réservés.</div>
+      </div>
+
+      <div class="footerLinks" aria-label="Liens légaux">
+        <a href="/legal/cgu.html">CGU</a>
+        <a href="/legal/cgv.html">CGV</a>
+        <a href="/legal/privacy.html">Confidentialité</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
