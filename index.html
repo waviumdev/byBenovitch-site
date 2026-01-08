@@ -93,14 +93,16 @@
       .heroGrid{grid-template-columns:1fr}
     }
 
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid rgba(35,39,52,.9);
-      background: rgba(255,255,255,.02);
-      .card { box-shadow: none; }
+.card{
+  border-radius: var(--radius);
+  border: 1px solid rgba(35,39,52,.9);
+  background: rgba(255,255,255,.02);
+  box-shadow: none;
+}
+
+/* si tu veux une ombre sur certains blocs seulement */
 .shadow { box-shadow: var(--shadow); }
 
-    }
     .panel{padding: 16px; border-radius: 16px; border: 1px solid rgba(35,39,52,.9); background: rgba(255,255,255,.02);}
     .panel h2{margin:0 0 8px; font-size: 15px;}
     .panel p{margin:0; color: var(--muted); font-size: 14px; line-height:1.6;}
@@ -229,6 +231,8 @@
   <div class="wrap hero">
     <div class="heroGrid">
       <div class="panel card" style="padding:18px;">
+        <div class="panel card shadow" style="padding:18px;">
+
         <h1>Du concret pour tes sorties.</h1>
         <p class="lead">
           Mix, master, distribution, consulting &amp; assets (cover/bio/site).
