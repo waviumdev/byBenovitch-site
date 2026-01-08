@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mix — By Benovitch</title>
+  <meta name="description" content="Mix by Benovitch : un mix clair, équilibré et fidèle à ton intention. À partir de 40 €. Demande de devis via /contact." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --text:#f4f5f7;
+      --muted:#b7bcc7;
+      --line:#232734;
+      --accent:#9ad6ff;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(35,39,52,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(11,12,16,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(35,39,52,.6);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+    .brand{display:flex; align-items:baseline; gap:10px; font-weight:800; letter-spacing:.4px;}
+    .brand small{color:var(--muted); font-weight:600;}
+    .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+    .menu a{
+      padding:10px 12px; border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .menu a:hover{
+      color: var(--text);
+      border-color: rgba(35,39,52,.9);
+      background: rgba(255,255,255,.03);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
+      border-color: rgba(154,214,255,.35);
+    }
+
+    /* Page head */
+    .head{padding: 24px 0 12px;}
+    .crumbs{color:var(--muted); font-size:13px;}
+    .crumbs a{color:var(--muted); text-decoration:underline; text-underline-offset:2px;}
+    h1{
+      margin: 10px 0 10px;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -.3px;
+    }
+    .lead{margin:0; color: var(--muted); max-width: 75ch; font-size: 15px;}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    .badge{
+      font-size: 13px;
+      color: var(--text);
+      border: 1px solid rgba(154,214,255,.30);
+      background: rgba(154,214,255,.07);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+    .note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Layout */
+    section{padding: 16px 0;}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .box{
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(255,255,255,.02);
+    }
+    .box h2{margin:0 0 8px; font-size: 16px;}
+    .box p{margin:0; color:var(--muted); font-size: 14px;}
+    .box ul{margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px;}
+    .box li{margin: 6px 0;}
+    .stack{display:flex; flex-direction:column; gap:12px;}
+
+    /* CTA card */
+    .cta{
+      padding: 18px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta h3{margin:0; font-size: 18px;}
+    .cta p{margin:0; color: var(--muted); max-width: 70ch; font-size: 14px;}
+    .small{font-size:13px; color:var(--muted); margin:10px 0 0;}
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(35,39,52,.6);
+      padding: 22px 0 30px;
+      color: var(--muted);
+    }
+    .footerGrid{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center;}
+    .footerLinks{display:flex; gap:12px; flex-wrap:wrap;}
+    .footerLinks a{color: var(--muted); padding: 8px 10px; border-radius: 12px;}
+    .footerLinks a:hover{color: var(--text); background: rgba(255,255,255,.03);}
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="By Benovitch, accueil">
+        By Benovitch <small>Music Business</small>
+      </a>
+      <nav class="menu" aria-label="Navigation">
+        <a href="/services">Services</a>
+        <a href="/pls">PLS</a>
+        <a href="/suggest">Suggestions</a>
+        <a class="btn primary" href="/contact">Demander un devis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap head">
+      <div class="crumbs">
+        <a href="/services">Services</a> <span aria-hidden="true">/</span> Mix
+      </div>
+
+      <h1>Mix by Benovitch</h1>
+
+      <p class="lead">
+        Un mix clair, équilibré et fidèle à ton intention.
+        L’objectif : un rendu cohérent, lisible, prêt à performer sur tous supports.
+      </p>
+
+      <div class="badges" aria-label="Infos tarifaires">
+        <div class="badge">À partir de 40 €</div>
+        <div class="badge">Devis rapide</div>
+        <div class="badge">Retours &amp; ajustements</div>
+      </div>
+
+      <p class="note">
+        Le tarif final dépend du nombre de pistes, de l’état des stems, du style, et des délais.
+      </p>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="/contact">Demander un devis</a>
+        <a class="btn" href="/services">Voir tous les services</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap grid">
+
+        <!-- Colonne principale -->
+        <div class="stack">
+
+          <div class="box">
+            <h2>Pour qui ?</h2>
+            <ul>
+              <li>Artistes indépendants (single, EP, album)</li>
+              <li>Projets qui veulent un rendu pro sans perdre l’ADN</li>
+              <li>Besoin de cohérence sonore avant distribution</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Ce que tu reçois</h2>
+            <ul>
+              <li>Un mix équilibré (volume, dynamique, espace, clarté)</li>
+              <li>Une écoute “plateformes” (compatibilité et translation)</li>
+              <li>Un rendu cohérent avec ton esthétique et tes références</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Process (simple et cadré)</h2>
+            <ul>
+              <li><strong>1) Brief</strong> : objectif, références, deadline, fichiers</li>
+              <li><strong>2) Mix</strong> : première version + export</li>
+              <li><strong>3) Ajustements</strong> : retours, corrections, finalisation</li>
+            </ul>
+            <p class="small">Tu peux joindre des références (liens Spotify/YouTube) dans ton message sur la page contact.</p>
+          </div>
+
+          <div class="box">
+            <h2>Livrables</h2>
+            <ul>
+              <li>Fichier final en WAV (et/ou MP3 sur demande)</li>
+              <li>Format “distribution” prêt à upload</li>
+              <li>Option : versions alternatives (radio edit, clean, instrumental) — selon devis</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>FAQ</h2>
+            <ul>
+              <li><strong>Tu mixes quel style ?</strong> Tous styles — on s’aligne sur tes références.</li>
+              <li><strong>Je n’ai pas des stems propres.</strong> On voit ensemble ce qui est possible (ou ce qu’il faut corriger).</li>
+              <li><strong>Délais ?</strong> Ça dépend de la charge + urgence (à préciser dans ton message).</li>
+            </ul>
+          </div>
+
+          <div class="card cta">
+            <div>
+              <h3>Envie d’avancer vite ?</h3>
+              <p>Envoie un lien + ta deadline + ce que tu veux améliorer. Je te réponds avec une proposition claire.</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="/contact">Demander un devis</a>
+              <a class="btn" href="/pls">Voir PLS</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Colonne latérale -->
+        <aside class="stack" aria-label="Infos rapides">
+          <div class="box">
+            <h2>Infos rapides</h2>
+            <ul>
+              <li><strong>Prix plancher</strong> : 40 €</li>
+              <li><strong>Retours</strong> : inclus (dans la limite du raisonnable)</li>
+              <li><strong>À fournir</strong> : stems / bounce + tempo si possible</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Ce que je te conseille</h2>
+            <ul>
+              <li>Donne 1–2 références maximum (sinon ça dilue l’objectif)</li>
+              <li>Indique si tu vises une sortie “plateforme” (Spotify/Apple)</li>
+              <li>Précise si tu veux une version clean/instrumental</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Prochaine étape</h2>
+            <p>
+              Clique sur “Demander un devis” et décris ton projet.
+              Tu peux coller un lien (SoundCloud/Drive) et ta deadline.
+            </p>
+            <div style="margin-top:12px;">
+              <a class="btn primary" href="/contact" style="width:100%">Demander un devis</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footerGrid">
+      <div>
+        <strong style="color:var(--text);">By Benovitch</strong>
+        <div style="font-size:13px; margin-top:6px;">© <span id="year"></span> — Tous droits réservés.</div>
+      </div>
+
+      <div class="footerLinks" aria-label="Liens légaux">
+        <a href="/legal/cgu.html">CGU</a>
+        <a href="/legal/cgv.html">CGV</a>
+        <a href="/legal/privacy.html">Confidentialité</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
