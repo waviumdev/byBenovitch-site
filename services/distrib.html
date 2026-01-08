@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Distrib — By Benovitch</title>
+  <meta name="description" content="Distrib by Benovitch : distribution annuelle à partir de 120 €/an. Transfert de catalogue à partir de 50 €, offert avec la distribution annuelle." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --text:#f4f5f7;
+      --muted:#b7bcc7;
+      --line:#232734;
+      --accent:#9ad6ff;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(35,39,52,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(11,12,16,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(35,39,52,.6);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+    .brand{display:flex; align-items:baseline; gap:10px; font-weight:800; letter-spacing:.4px;}
+    .brand small{color:var(--muted); font-weight:600;}
+    .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+    .menu a{
+      padding:10px 12px; border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .menu a:hover{
+      color: var(--text);
+      border-color: rgba(35,39,52,.9);
+      background: rgba(255,255,255,.03);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
+      border-color: rgba(154,214,255,.35);
+    }
+
+    /* Page head */
+    .head{padding: 24px 0 12px;}
+    .crumbs{color:var(--muted); font-size:13px;}
+    .crumbs a{color:var(--muted); text-decoration:underline; text-underline-offset:2px;}
+    h1{
+      margin: 10px 0 10px;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -.3px;
+    }
+    .lead{margin:0; color: var(--muted); max-width: 75ch; font-size: 15px;}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    .badge{
+      font-size: 13px;
+      color: var(--text);
+      border: 1px solid rgba(154,214,255,.30);
+      background: rgba(154,214,255,.07);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+    .note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section{padding: 16px 0;}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .box{
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(255,255,255,.02);
+    }
+    .box h2{margin:0 0 8px; font-size: 16px;}
+    .box p{margin:0; color:var(--muted); font-size: 14px;}
+    .box ul{margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px;}
+    .box li{margin: 6px 0;}
+    .stack{display:flex; flex-direction:column; gap:12px;}
+
+    .offers{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .offer{
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(255,255,255,.02);
+      display:flex; flex-direction:column; gap:10px;
+      min-height: 160px;
+    }
+    .offer h3{margin:0; font-size: 16px;}
+    .offer p{margin:0; color:var(--muted); font-size: 14px;}
+    .price{
+      font-size: 13px;
+      color: var(--text);
+      border: 1px solid rgba(154,214,255,.30);
+      background: rgba(154,214,255,.07);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+      display:inline-flex;
+      width: fit-content;
+    }
+    .more{
+      margin-top:auto;
+      color: var(--text);
+      font-weight: 650;
+      display:inline-flex; gap:10px; align-items:center;
+      padding-top: 6px;
+    }
+    .more span{color: var(--muted); font-weight:600}
+
+    /* CTA card */
+    .cta{
+      padding: 18px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta h3{margin:0; font-size: 18px;}
+    .cta p{margin:0; color: var(--muted); max-width: 70ch; font-size: 14px;}
+    .small{font-size:13px; color:var(--muted); margin:10px 0 0;}
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(35,39,52,.6);
+      padding: 22px 0 30px;
+      color: var(--muted);
+    }
+    .footerGrid{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center;}
+    .footerLinks{display:flex; gap:12px; flex-wrap:wrap;}
+    .footerLinks a{color: var(--muted); padding: 8px 10px; border-radius: 12px;}
+    .footerLinks a:hover{color: var(--text); background: rgba(255,255,255,.03);}
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+      .offers{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="By Benovitch, accueil">
+        By Benovitch <small>Music Business</small>
+      </a>
+      <nav class="menu" aria-label="Navigation">
+        <a href="/services">Services</a>
+        <a href="/pls">PLS</a>
+        <a href="/suggest">Suggestions</a>
+        <a class="btn primary" href="/contact">Demander un devis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap head">
+      <div class="crumbs">
+        <a href="/services">Services</a> <span aria-hidden="true">/</span> Distrib
+      </div>
+
+      <h1>Distrib by Benovitch</h1>
+
+      <p class="lead">
+        Distribution annuelle + options, avec une logique simple : cadrer le projet et éviter les erreurs classiques.
+        Si tu prends la distribution annuelle, le <strong>transfert de catalogue est offert</strong>.
+      </p>
+
+      <div class="badges" aria-label="Infos tarifaires">
+        <div class="badge">Distribution : dès 120 € / an</div>
+        <div class="badge">Transfert : dès 50 €</div>
+        <div class="badge">Transfert offert avec l’annuel</div>
+      </div>
+
+      <p class="note">
+        Le tarif final dépend du volume (nombre de releases), de l’état du catalogue, et des délais.
+      </p>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="/contact">Demander un devis</a>
+        <a class="btn" href="/services/catalog-transfer.html">Voir le transfert</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+
+        <div class="offers" aria-label="Offres distribution">
+          <!-- Annual -->
+          <div class="offer">
+            <div class="price">À partir de 120 € / an</div>
+            <h3>Distribution annuelle</h3>
+            <p>Pour sortir ta musique sur les plateformes avec un cadre clair, sur l’année.</p>
+            <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px;">
+              <li>Organisation des sorties</li>
+              <li>Vérifications essentielles (métadonnées, versions)</li>
+              <li><strong>Transfert offert</strong> si tu viens d’une autre distrib</li>
+            </ul>
+            <a class="more" href="/services/distrib-annual.html"><span>Détails</span> →</a>
+          </div>
+
+          <!-- Transfer -->
+          <div class="offer">
+            <div class="price">À partir de 50 €</div>
+            <h3>Transfert de catalogue</h3>
+            <p>Migration / transfert d’un catalogue existant vers une nouvelle distribution.</p>
+            <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px;">
+              <li>Migration cadrée</li>
+              <li>Checks de base (doublons, versions, identifiants)</li>
+              <li>Offert avec la distribution annuelle</li>
+            </ul>
+            <a class="more" href="/services/catalog-transfer.html"><span>Détails</span> →</a>
+          </div>
+        </div>
+
+        <div class="grid" style="margin-top:12px;">
+          <!-- Colonne principale -->
+          <div class="stack">
+            <div class="box">
+              <h2>Pour qui ?</h2>
+              <ul>
+                <li>Artistes indés qui veulent un cadre propre pour sortir régulièrement</li>
+                <li>Projets qui veulent éviter les erreurs de distribution (versions, crédits, doublons)</li>
+                <li>Catalogues existants à transférer / réorganiser</li>
+              </ul>
+            </div>
+
+            <div class="box">
+              <h2>Ce qu’on fait (concrètement)</h2>
+              <ul>
+                <li>Clarifier ton objectif (single, EP, album, rythme de sorties)</li>
+                <li>Vérifier les éléments importants (titres, crédits, artwork, versions)</li>
+                <li>Structurer un plan simple et exécutable</li>
+              </ul>
+              <p class="small">L’idée : éviter les erreurs “qui coûtent du temps” (et parfois des revenus) une fois publié.</p>
+            </div>
+
+            <div class="box">
+              <h2>Process</h2>
+              <ul>
+                <li><strong>1) Brief</strong> : objectifs + état du catalogue + deadlines</li>
+                <li><strong>2) Plan</strong> : ce qu’on sort / quand / avec quels éléments</li>
+                <li><strong>3) Exécution</strong> : distribution / transfert / contrôles finaux</li>
+              </ul>
+            </div>
+
+            <div class="box">
+              <h2>FAQ</h2>
+              <ul>
+                <li><strong>Le transfert, ça sert à quoi ?</strong> Garder la continuité en changeant de distribution.</li>
+                <li><strong>Je ne sais pas ce qu’il faut fournir.</strong> On te dira exactement (liens, fichiers, artwork, crédits).</li>
+                <li><strong>Combien de temps ?</strong> Ça dépend du volume et de l’état du catalogue.</li>
+              </ul>
+            </div>
+
+            <div class="card cta">
+              <div>
+                <h3>Tu veux cadrer ta prochaine sortie ?</h3>
+                <p>Envoie ton objectif, ton nombre de titres, et si tu as déjà un catalogue à transférer.</p>
+              </div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <a class="btn primary" href="/contact">Demander un devis</a>
+                <a class="btn" href="/services">Tous les services</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colonne latérale -->
+          <aside class="stack" aria-label="Infos rapides">
+            <div class="box">
+              <h2>Tarifs</h2>
+              <ul>
+                <li><strong>Distribution annuelle</strong> : à partir de 120 € / an</li>
+                <li><strong>Transfert</strong> : à partir de 50 €</li>
+                <li><strong>Transfert offert</strong> si distribution annuelle</li>
+              </ul>
+            </div>
+
+            <div class="box">
+              <h2>À inclure dans ton message</h2>
+              <ul>
+                <li>Nombre de titres à distribuer</li>
+                <li>Deadline (date visée)</li>
+                <li>Si tu as un catalogue existant (oui/non)</li>
+                <li>Liens / références utiles</li>
+              </ul>
+            </div>
+
+            <div class="box">
+              <h2>Prochaine étape</h2>
+              <p>
+                Clique sur “Demander un devis”, décris ton projet et ce que tu veux faire
+                (distribution annuelle, transfert, ou les deux).
+              </p>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="/contact" style="width:100%">Demander un devis</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footerGrid">
+      <div>
+        <strong style="color:var(--text);">By Benovitch</strong>
+        <div style="font-size:13px; margin-top:6px;">© <span id="year"></span> — Tous droits réservés.</div>
+      </div>
+
+      <div class="footerLinks" aria-label="Liens légaux">
+        <a href="/legal/cgu.html">CGU</a>
+        <a href="/legal/cgv.html">CGV</a>
+        <a href="/legal/privacy.html">Confidentialité</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
