@@ -8,9 +8,6 @@
 <meta name="robots" content="index,follow">
 
 <style>
-/* =========================
-   RESET & VARIABLES
-========================= */
 :root{
   --bg:#0b0c10;
   --text:#f4f5f7;
@@ -19,20 +16,20 @@
   --accent:#9ad6ff;
   --max:1100px;
   --radius:18px;
-  --shadow:0 14px 40px rgba(0,0,0,.35);
+
+  /* Ombres “safe” (évite les grosses ombres floues qui bandent) */
+  --shadow-soft: 0 8px 18px rgba(0,0,0,.28);
+  --shadow-hover: 0 12px 28px rgba(0,0,0,.34);
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:var(--bg);
+  background: var(--bg);
   color:var(--text);
 }
 
-/* =========================
-   GLOBAL
-========================= */
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:24px}
 @media(max-width:520px){.wrap{padding:18px}}
@@ -47,9 +44,7 @@ h1{font-size:34px;margin:0}
   margin-top:10px;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 header{
   position:sticky;
   top:0;
@@ -97,9 +92,7 @@ header{
   color:#071018;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 .hero{padding-top:20px}
 .heroGrid{
   display:grid;
@@ -115,6 +108,7 @@ header{
   border-radius:var(--radius);
   border:1px solid var(--line);
   background:rgba(255,255,255,.02);
+  box-shadow: var(--shadow-soft);
 }
 
 .badges{
@@ -142,9 +136,7 @@ header{
   .heroActions .btn{width:100%}
 }
 
-/* =========================
-   SERVICES
-========================= */
+/* SERVICES */
 .sectionTitle{
   font-size:18px;
   margin:32px 0 8px;
@@ -169,46 +161,57 @@ header{
   border-radius:16px;
   border:1px solid var(--line);
   background:rgba(255,255,255,.02);
+  box-shadow: var(--shadow-soft);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.item:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(154,214,255,.35);
 }
 .item h3{margin:0 0 6px}
 .item p{
   font-size:14px;
   color:var(--muted);
   line-height:1.5;
+  margin:0;
 }
-.price{
-  margin-top:10px;
+
+.ctaHint{
+  margin-top:12px;
   font-size:13px;
+  color: var(--muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
-.price strong{color:var(--text)}
-
-.tag{
-  font-size:12px;
-  padding:3px 8px;
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding:4px 10px;
   border-radius:999px;
-  border:1px solid rgba(154,214,255,.35);
-  background:rgba(154,214,255,.08);
-  margin-left:6px;
+  border:1px solid rgba(154,214,255,.25);
+  background:rgba(154,214,255,.06);
+  color: var(--text);
+  font-weight:650;
+  font-size:12px;
 }
 
-/* =========================
-   PLS
-========================= */
+/* PLS */
 .plsBanner{
   display:block;
   margin-top:14px;
   border-radius:16px;
   overflow:hidden;
   border:1px solid var(--line);
+  box-shadow: var(--shadow-soft);
 }
 .plsBanner img{
   width:100%;
   display:block;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 footer{
   margin-top:40px;
   border-top:1px solid var(--line);
@@ -263,8 +266,8 @@ footer{
       </p>
 
       <div class="badges">
-        <div class="badge">Prix planchers affichés</div>
         <div class="badge">Process cadré</div>
+        <div class="badge">Services + stratégie</div>
         <div class="badge">PLS : 12 playlists Spotify</div>
       </div>
 
@@ -290,62 +293,62 @@ footer{
   <div class="wrap">
     <h2 class="sectionTitle">Services</h2>
     <p class="sectionDesc">
-      Des services music business conçus pour avancer vite et proprement.
+      Clique sur un service pour voir le détail, les livrables et le cadre.
     </p>
 
     <div class="grid">
       <a class="item" href="services/consulting.html">
-        <h3>Consulting <span class="tag">Most requested</span></h3>
+        <h3>Consulting</h3>
         <p>Stratégie, décisions, plan d’action.</p>
-        <div class="price"><strong>40 € / h</strong> ou <strong>120 € / mission</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
 
       <a class="item" href="services/master.html">
-        <h3>Master <span class="tag">Most requested</span></h3>
+        <h3>Master</h3>
         <p>Master prêt plateformes.</p>
-        <div class="price"><strong>À partir de 40 €</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
 
       <a class="item" href="services/distrib.html">
-        <h3>Distribution <span class="tag">Most requested</span></h3>
+        <h3>Distribution</h3>
         <p>Mise en ligne & suivi.</p>
-        <div class="price"><strong>À partir de 120 € / an</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
 
       <a class="item" href="services/catalog-transfer.html">
         <h3>Transfert de catalogue</h3>
         <p>Migration propre.</p>
-        <div class="price"><strong>À partir de 40 €</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
 
       <a class="item" href="services/mix.html">
         <h3>Mix</h3>
         <p>Mix cohérent et équilibré.</p>
-        <div class="price"><strong>À partir de 40 €</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
 
       <a class="item" href="services/site.html">
         <h3>Site vitrine</h3>
         <p>Site clair et rapide.</p>
-        <div class="price"><strong>À partir de 200 €</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
 
       <a class="item" href="services/cover.html">
         <h3>Cover (IA assistée)</h3>
         <p>Direction artistique.</p>
-        <div class="price"><strong>À partir de 50 €</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
 
       <a class="item" href="services/bio.html">
         <h3>Bio</h3>
         <p>Courte & longue.</p>
-        <div class="price"><strong>À partir de 30 €</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
 
       <a class="item" href="services/playlists.html">
         <h3>Playlists</h3>
         <p>Stratégie playlists.</p>
-        <div class="price"><strong>Sur devis</strong></div>
+        <div class="ctaHint"><span class="pill">Voir l’offre</span> <span>→</span></div>
       </a>
     </div>
   </div>
