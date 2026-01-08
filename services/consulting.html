@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consulting — By Benovitch</title>
+  <meta name="description" content="Consulting by Benovitch : stratégie, structuration, décisions claires. 40 € / h ou 120 € / mission." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --text:#f4f5f7;
+      --muted:#b7bcc7;
+      --line:#232734;
+      --accent:#9ad6ff;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(35,39,52,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(11,12,16,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(35,39,52,.6);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+    .brand{display:flex; align-items:baseline; gap:10px; font-weight:800; letter-spacing:.4px;}
+    .brand small{color:var(--muted); font-weight:600;}
+    .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+    .menu a{
+      padding:10px 12px; border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .menu a:hover{
+      color: var(--text);
+      border-color: rgba(35,39,52,.9);
+      background: rgba(255,255,255,.03);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
+      border-color: rgba(154,214,255,.35);
+    }
+
+    /* Page head */
+    .head{padding: 24px 0 12px;}
+    .crumbs{color:var(--muted); font-size:13px;}
+    .crumbs a{color:var(--muted); text-decoration:underline; text-underline-offset:2px;}
+    h1{
+      margin: 10px 0 10px;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -.3px;
+    }
+    .lead{margin:0; color: var(--muted); max-width: 80ch; font-size: 15px;}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    .badge{
+      font-size: 13px;
+      color: var(--text);
+      border: 1px solid rgba(154,214,255,.30);
+      background: rgba(154,214,255,.07);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+    .note{margin-top: 10px; color: var(--muted); font-size: 13px;}
+
+    section{padding: 16px 0;}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .box{
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(255,255,255,.02);
+    }
+    .box h2{margin:0 0 8px; font-size: 16px;}
+    .box p{margin:0; color:var(--muted); font-size: 14px;}
+    .box ul{margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px;}
+    .box li{margin: 6px 0;}
+    .stack{display:flex; flex-direction:column; gap:12px;}
+
+    .cta{
+      padding: 18px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta h3{margin:0; font-size: 18px;}
+    .cta p{margin:0; color: var(--muted); max-width: 70ch; font-size: 14px;}
+
+    footer{
+      border-top: 1px solid rgba(35,39,52,.6);
+      padding: 22px 0 30px;
+      color: var(--muted);
+    }
+    .footerGrid{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center;}
+    .footerLinks{display:flex; gap:12px; flex-wrap:wrap;}
+    .footerLinks a{color: var(--muted); padding: 8px 10px; border-radius: 12px;}
+    .footerLinks a:hover{color: var(--text); background: rgba(255,255,255,.03);}
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="By Benovitch, accueil">
+        By Benovitch <small>Music Business</small>
+      </a>
+      <nav class="menu" aria-label="Navigation">
+        <a href="/services">Services</a>
+        <a href="/pls">PLS</a>
+        <a href="/suggest">Suggestions</a>
+        <a class="btn primary" href="/contact">Demander un devis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap head">
+      <div class="crumbs">
+        <a href="/services">Services</a> <span aria-hidden="true">/</span> Consulting
+      </div>
+
+      <h1>Consulting by Benovitch</h1>
+
+      <p class="lead">
+        Quand tu as besoin de décisions claires, d’un plan concret et d’un regard extérieur.
+        Pas de blabla : on clarifie, on structure, on avance.
+      </p>
+
+      <div class="badges" aria-label="Infos tarifaires">
+        <div class="badge">40 € / heure</div>
+        <div class="badge">120 € / mission</div>
+        <div class="badge">Objectifs clairs</div>
+      </div>
+
+      <p class="note">
+        Le format dépend de ton besoin : ponctuel (heure) ou cadré (mission).
+      </p>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="/contact">Demander un devis</a>
+        <a class="btn" href="/services">Voir tous les services</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap grid">
+
+        <!-- Colonne principale -->
+        <div class="stack">
+          <div class="box">
+            <h2>Pour quoi ?</h2>
+            <ul>
+              <li>Structurer un projet artistique</li>
+              <li>Clarifier une stratégie de sortie</li>
+              <li>Prendre des décisions (distribution, positionnement, timing)</li>
+              <li>Sortir d’un flou ou d’un blocage</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Formats possibles</h2>
+            <ul>
+              <li><strong>À l’heure</strong> : question précise, audit rapide, retour direct</li>
+              <li><strong>À la mission</strong> : objectif défini + livrable clair</li>
+            </ul>
+            <p class="note">On choisit le format le plus efficace, pas le plus long.</p>
+          </div>
+
+          <div class="box">
+            <h2>Ce que tu obtiens</h2>
+            <ul>
+              <li>Un diagnostic clair (forces, failles, priorités)</li>
+              <li>Un plan d’action concret (quoi / quand / pourquoi)</li>
+              <li>Des décisions argumentées (pas “au feeling”)</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Process</h2>
+            <ul>
+              <li><strong>1) Brief</strong> : objectif + contexte</li>
+              <li><strong>2) Analyse</strong> : audit rapide</li>
+              <li><strong>3) Reco</strong> : plan + prochaines actions</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>FAQ</h2>
+            <ul>
+              <li><strong>Est-ce que tu fais les choses à ma place ?</strong> Non, je t’aide à décider et structurer.</li>
+              <li><strong>Combien de temps ?</strong> Parfois 1h suffit. Parfois une mission est plus efficace.</li>
+              <li><strong>Est-ce adapté aux débutants ?</strong> Oui, si tu veux structurer sérieusement.</li>
+            </ul>
+          </div>
+
+          <div class="card cta">
+            <div>
+              <h3>Besoin d’y voir clair ?</h3>
+              <p>Explique ta situation et ce que tu veux décider. Je te réponds avec le format adapté.</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="/contact">Demander un devis</a>
+              <a class="btn" href="/services">Tous les services</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne latérale -->
+        <aside class="stack" aria-label="Infos rapides">
+          <div class="box">
+            <h2>Tarifs</h2>
+            <ul>
+              <li><strong>Consulting</strong> : 40 € / heure</li>
+              <li><strong>Mission</strong> : 120 €</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>À préparer</h2>
+            <ul>
+              <li>Objectif principal</li>
+              <li>Contexte (où tu en es)</li>
+              <li>Liens utiles (musique, site, etc.)</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h2>Prochaine étape</h2>
+            <p>Clique sur “Demander un devis” et explique ton besoin. Je te propose le bon format.</p>
+            <div style="margin-top:12px;">
+              <a class="btn primary" href="/contact" style="width:100%">Demander un devis</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footerGrid">
+      <div>
+        <strong style="color:var(--text);">By Benovitch</strong>
+        <div style="font-size:13px; margin-top:6px;">© <span id="year"></span> — Tous droits réservés.</div>
+      </div>
+
+      <div class="footerLinks" aria-label="Liens légaux">
+        <a href="/legal/cgu.html">CGU</a>
+        <a href="/legal/cgv.html">CGV</a>
+        <a href="/legal/privacy.html">Confidentialité</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
