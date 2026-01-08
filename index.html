@@ -1,421 +1,163 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
+  <title>By Benovitch — Music business & services for artists</title>
+  <meta name="description" content="Mix, mastering, distribution, consulting et services music business pour artistes indépendants. Une approche concrète, orientée résultats." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>By Benovitch — Music Business</title>
-  <meta name="description" content="By Benovitch : services music business (mix, master, distribution, consulting, cover, bio) + PLS playlists Spotify." />
-  <meta name="robots" content="index,follow" />
 
-  <style>
-    :root{
-      --bg:#0b0c10;
-      --text:#f4f5f7;
-      --muted:#b7bcc7;
-      --line:#232734;
-      --accent:#9ad6ff;
-      --shadow: 0 12px 40px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1080px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
-                  radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.55;
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-    .card{
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(35,39,52,.9);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    /* Header */
-    header{
-      position: sticky; top:0; z-index:50;
-      background: rgba(11,12,16,.72);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(35,39,52,.6);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px;}
-    .brand{display:flex; align-items:baseline; gap:10px; font-weight:800; letter-spacing:.4px;}
-    .brand small{color:var(--muted); font-weight:600;}
-    .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
-    .menu a{
-      padding:10px 12px; border-radius: 12px;
-      color: var(--muted);
-      border: 1px solid transparent;
-    }
-    .menu a:hover{
-      color: var(--text);
-      border-color: rgba(35,39,52,.9);
-      background: rgba(255,255,255,.03);
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      cursor:pointer;
-      transition: transform .08s ease, background .15s ease, border-color .15s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
-    .btn:active{ transform: translateY(1px); }
-    .btn.primary{
-      background: linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
-      border-color: rgba(154,214,255,.35);
-      font-weight:650;
-    }
-
-    /* Hero */
-    .hero{padding: 34px 0 10px;}
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 14px;
-      align-items:stretch;
-    }
-    h1{
-      margin:0 0 10px;
-      font-size: clamp(30px, 4.4vw, 54px);
-      line-height: 1.05;
-      letter-spacing: -.6px;
-    }
-    .lead{margin:0; color: var(--muted); max-width: 80ch; font-size: 15px;}
-    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
-    .badge{
-      font-size: 13px;
-      color: var(--text);
-      border: 1px solid rgba(154,214,255,.30);
-      background: rgba(154,214,255,.07);
-      padding: 6px 10px;
-      border-radius: 999px;
-      white-space:nowrap;
-    }
-    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;}
-    .panel{padding: 16px; border-radius: 16px; border: 1px solid rgba(35,39,52,.9); background: rgba(255,255,255,.02);}
-    .panel h2{margin:0 0 8px; font-size: 15px;}
-    .panel p{margin:0; color: var(--muted); font-size: 14px;}
-    .panel ul{margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px;}
-    .panel li{margin:6px 0;}
-    .miniCtas{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-
-    /* Sections */
-    section{padding: 14px 0;}
-    .sectionTitle{
-      margin: 18px 0 8px;
-      font-size: 18px;
-      letter-spacing: -.2px;
-    }
-    .sectionDesc{margin:0; color: var(--muted); font-size: 14px; max-width: 85ch;}
-
-    /* Cards grid */
-    .grid{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-    }
-    .item{
-      grid-column: span 4;
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(35,39,52,.9);
-      background: rgba(255,255,255,.02);
-      transition: transform .08s ease, background .15s ease, border-color .15s ease;
-    }
-    .item:hover{
-      background: rgba(255,255,255,.03);
-      border-color: rgba(154,214,255,.22);
-      transform: translateY(-1px);
-    }
-    .item h3{margin:0 0 6px; font-size: 15px;}
-    .item p{margin:0; color: var(--muted); font-size: 13px;}
-    .price{margin-top:10px; font-size:13px; color: var(--text);}
-    .price span{color: var(--muted);}
-
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .cta{
-      padding: 18px;
-      display:flex;
-      gap: 14px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-    .cta h3{margin:0; font-size: 18px;}
-    .cta p{margin:0; color: var(--muted); max-width: 80ch; font-size: 14px;}
-
-    /* Footer */
-    footer{
-      border-top: 1px solid rgba(35,39,52,.6);
-      padding: 22px 0 30px;
-      color: var(--muted);
-      margin-top: 18px;
-    }
-    .footerGrid{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center;}
-    .footerLinks{display:flex; gap:12px; flex-wrap:wrap;}
-    .footerLinks a{color: var(--muted); padding: 8px 10px; border-radius: 12px;}
-    .footerLinks a:hover{color: var(--text); background: rgba(255,255,255,.03);}
-
-    @media (max-width: 980px){
-      .heroGrid{grid-template-columns: 1fr;}
-    }
-    @media (max-width: 860px){
-      .item{grid-column: span 6;}
-      .split{grid-template-columns: 1fr;}
-    }
-    @media (max-width: 520px){
-      .item{grid-column: span 12;}
-    }
-  </style>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
-
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="/" aria-label="By Benovitch, accueil">
-        By Benovitch <small>Music Business</small>
-      </a>
-      <nav class="menu" aria-label="Navigation">
-        <a href="/services">Services</a>
-        <a href="/pls">PLS</a>
-        <a href="/suggest">Suggestions</a>
-        <a class="btn primary" href="/contact">Demander un devis</a>
-      </nav>
-    </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="logo">By Benovitch</a>
+
+      <ul class="nav-links">
+        <li><a href="/services">Services</a></li>
+        <li><a href="/pls">Playlists</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <div class="wrap hero">
-      <div class="heroGrid">
-        <div class="panel card" style="padding:18px;">
-          <h1>Du concret pour tes sorties.</h1>
-          <p class="lead">
-            Mix, master, distribution, consulting &amp; assets (cover/bio/site).
-            Un cadre simple, rapide et cohérent — sans blabla.
-          </p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Du concret pour tes sorties.</h1>
 
-          <div class="badges" aria-label="Points clés">
-            <div class="badge">Prix planchers affichés</div>
-            <div class="badge">Process cadré</div>
-            <div class="badge">PLS : 12 playlists Spotify</div>
-          </div>
+      <p class="hero-subtitle">
+        Music business & services pour artistes indépendants.<br>
+        Mix, mastering, distribution, consulting et accompagnement stratégique.
+      </p>
 
-          <div class="heroActions">
-            <a class="btn primary" href="/services">Voir les services</a>
-            <a class="btn" href="/pls">Voir PLS</a>
-            <a class="btn" href="/contact">Me contacter</a>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h2>Par où commencer ?</h2>
-          <p>Si tu veux aller vite, voici le chemin le plus simple :</p>
-          <ul>
-            <li><strong>1)</strong> Master (si ton mix est prêt)</li>
-            <li><strong>2)</strong> Distribution (si tu veux publier)</li>
-            <li><strong>3)</strong> Consulting (si tu es dans le flou)</li>
-          </ul>
-          <div class="miniCtas">
-            <a class="btn" href="/services/master.html">Master</a>
-            <a class="btn" href="/services/distrib.html">Distrib</a>
-            <a class="btn" href="/services/consulting.html">Consulting</a>
-          </div>
-        </div>
+      <div class="hero-cta">
+        <a href="/contact" class="btn btn-primary">Demander un devis</a>
+        <a href="/services" class="btn btn-secondary">Voir les services</a>
       </div>
     </div>
+  </section>
 
-    <!-- SERVICES -->
-    <section>
-      <div class="wrap">
-        <h2 class="sectionTitle">Services</h2>
-        <p class="sectionDesc">
-          Des services “music business” conçus pour avancer vite : qualité, cohérence, décisions claires.
+  <!-- SERVICES OVERVIEW -->
+  <section class="section services-overview">
+    <h2>Services by Benovitch</h2>
+    <p class="section-intro">
+      Des services pensés pour structurer, professionnaliser et faire avancer ton projet.
+    </p>
+
+    <div class="services-grid">
+
+      <a href="/master" class="service-card highlight">
+        <h3>Mastering</h3>
+        <p>Un master prêt pour la diffusion.</p>
+        <span class="price">À partir de 40 €</span>
+      </a>
+
+      <a href="/consulting" class="service-card highlight">
+        <h3>Consulting</h3>
+        <p>Stratégie, positionnement et vision globale.</p>
+        <span class="price">À partir de 40 € / h</span>
+      </a>
+
+      <a href="/distrib" class="service-card highlight">
+        <h3>Distribution</h3>
+        <p>Sorties cadrées, sans erreurs.</p>
+        <span class="price">À partir de 120 € / an</span>
+      </a>
+
+      <a href="/mix" class="service-card">
+        <h3>Mix</h3>
+        <p>Clarté, équilibre et intention respectée.</p>
+        <span class="price">À partir de 40 €</span>
+      </a>
+
+      <a href="/site" class="service-card">
+        <h3>Site vitrine artiste</h3>
+        <p>Une présence simple et professionnelle.</p>
+        <span class="price">À partir de 200 €</span>
+      </a>
+
+      <a href="/cover" class="service-card">
+        <h3>Cover (IA assistée)</h3>
+        <p>Pochettes cohérentes et efficaces.</p>
+        <span class="price">À partir de 50 €</span>
+      </a>
+
+      <a href="/bio" class="service-card">
+        <h3>Bio artiste</h3>
+        <p>Texte clair, structuré et exploitable.</p>
+        <span class="price">À partir de 30 €</span>
+      </a>
+
+      <a href="/playlists" class="service-card">
+        <h3>Playlists (service)</h3>
+        <p>Curating & stratégie playlists.</p>
+        <span class="price">Sur devis</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- PLS PROOF -->
+  <section class="section pls-proof">
+    <div class="pls-content">
+      <div class="pls-text">
+        <h2>PLS — Spotify Playlists</h2>
+        <p>
+          12 playlists curatées, mises à jour régulièrement.<br>
+          Pas de placement automatique. Une vraie sélection.
         </p>
 
-        <div class="grid" aria-label="Services principaux">
-          <a class="item" href="/services/mix.html">
-            <h3>Mix</h3>
-            <p>Un mix propre et cohérent, prêt à passer au master.</p>
-            <div class="price"><strong>À partir de 40 €</strong> <span>/ titre</span></div>
-          </a>
-
-          <a class="item" href="/services/master.html">
-            <h3>Master</h3>
-            <p>Optimisé plateformes, bonne translation partout.</p>
-            <div class="price"><strong>À partir de 30 €</strong> <span>/ titre</span></div>
-          </a>
-
-          <a class="item" href="/services/distrib.html">
-            <h3>Distribution</h3>
-            <p>Cadre simple pour publier (annuel + options).</p>
-            <div class="price"><strong>À partir de 120 €</strong> <span>/ an</span></div>
-          </a>
-
-          <a class="item" href="/services/catalog-transfer.html">
-            <h3>Transfert de catalogue</h3>
-            <p>Migrer proprement, éviter doublons et erreurs.</p>
-            <div class="price"><strong>À partir de 50 €</strong> <span>— offert avec l’annuel</span></div>
-          </a>
-
-          <a class="item" href="/services/site.html">
-            <h3>Site vitrine (artiste)</h3>
-            <p>Un site clair, rapide, et orienté conversion.</p>
-            <div class="price"><strong>À partir de 200 €</strong></div>
-          </a>
-
-          <a class="item" href="/services/consulting.html">
-            <h3>Consulting</h3>
-            <p>Décisions claires + plan d’action concret.</p>
-            <div class="price"><strong>40 € / h</strong> <span>ou</span> <strong>120 € / mission</strong></div>
-          </a>
-
-          <a class="item" href="/services/cover.html">
-            <h3>Cover (IA assistée)</h3>
-            <p>Direction artistique + itérations + export prêt plateformes.</p>
-            <div class="price"><strong>À partir de 50 €</strong></div>
-          </a>
-
-          <a class="item" href="/services/bio.html">
-            <h3>Bio</h3>
-            <p>Version courte/longue, utilisable partout (presse/pros/site).</p>
-            <div class="price"><strong>À partir de 30 €</strong></div>
-          </a>
-
-          <a class="item" href="/services/playlists.html">
-            <h3>Playlists</h3>
-            <p>Approche playlists (cohérence, stratégie, suivi).</p>
-            <div class="price"><strong>Sur devis</strong></div>
-          </a>
-        </div>
-
-        <div class="card cta" style="margin-top:14px;">
-          <div>
-            <h3>Tu veux un devis simple et rapide ?</h3>
-            <p>Envoie ton objectif, ta deadline et quelques liens (Spotify/Drive). Je te réponds avec une proposition claire.</p>
-          </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="/contact">Demander un devis</a>
-            <a class="btn" href="/services">Tous les services</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PLS -->
-    <section>
-      <div class="wrap">
-        <h2 class="sectionTitle">PLS — Playlists Spotify</h2>
-        <p class="sectionDesc">
-          12 playlists Spotify : covers cliquables (sans embed) + page de suggestions.
-        </p>
-
-        <div class="split">
-          <div class="panel">
-            <h2>Voir les playlists</h2>
-            <p>Accès direct : clique sur une cover et ouvre la playlist sur Spotify.</p>
-            <div class="miniCtas">
-              <a class="btn primary" href="/pls">Ouvrir PLS</a>
-              <a class="btn" href="/services/playlists.html">Offre Playlists</a>
-            </div>
-          </div>
-
-          <div class="panel">
-            <h2>Proposer un titre</h2>
-            <p>Un formulaire simple : lien Spotify + message. Si ça fit, je considère pour PLS.</p>
-            <div class="miniCtas">
-              <a class="btn primary" href="/suggest">Suggest a track</a>
-              <a class="btn" href="/contact">Contact</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section>
-      <div class="wrap">
-        <div class="card cta">
-          <div>
-            <h3>On avance quand ?</h3>
-            <p>Si tu veux cadrer tes prochaines sorties, le plus simple : un message avec ton contexte + ton objectif.</p>
-          </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="/contact">Me contacter</a>
-            <a class="btn" href="/services/consulting.html">Voir Consulting</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footerGrid">
-      <div>
-        <strong style="color:var(--text);">By Benovitch</strong>
-        <div style="font-size:13px; margin-top:6px;">© <span id="year"></span> — Tous droits réservés.</div>
+        <a href="/pls" class="btn btn-secondary">Voir les playlists</a>
       </div>
 
-      <div class="footerLinks" aria-label="Liens">
-        <a href="/legal/cgu.html">CGU</a>
-        <a href="/legal/cgv.html">CGV</a>
-        <a href="/legal/privacy.html">Confidentialité</a>
-        <a href="/contact">Contact</a>
+      <div class="pls-image">
+        <img src="/assets/img/pls-cover.jpg" alt="PLS Spotify Playlists by Benovitch">
       </div>
     </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section process">
+    <h2>Comment je travaille</h2>
+
+    <div class="process-steps">
+      <div class="step">
+        <h3>1. Analyse</h3>
+        <p>Ton projet, ton contexte, tes objectifs.</p>
+      </div>
+      <div class="step">
+        <h3>2. Plan</h3>
+        <p>Une approche adaptée, sans bullshit.</p>
+      </div>
+      <div class="step">
+        <h3>3. Exécution</h3>
+        <p>Du concret, livrable et exploitable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section final-cta">
+    <h2>Parlons de ton projet</h2>
+    <p>Chaque projet est différent. Le mieux reste d’en discuter.</p>
+
+    <a href="/contact" class="btn btn-primary">Me contacter</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <nav>
+      <a href="/cgu">CGU</a>
+      <a href="/cgv">CGV</a>
+      <a href="/privacy">Confidentialité</a>
+    </nav>
+
+    <p>© By Benovitch</p>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-
-    <script>
-  (function () {
-    // Ne s'exécute que sur GitHub Pages
-    if (!location.hostname.endsWith("github.io")) return;
-
-    const parts = location.pathname.split("/").filter(Boolean);
-    if (parts.length === 0) return;
-
-    const repo = parts[0];        // byBenovitch-site
-    const base = "/" + repo;
-
-    // Corrige les liens <a href="/...">
-    document.querySelectorAll('a[href^="/"]').forEach(link => {
-      const href = link.getAttribute("href");
-      if (!href.startsWith(base + "/")) {
-        link.setAttribute("href", base + href);
-      }
-    });
-
-    // Corrige aussi les formulaires si besoin
-    document.querySelectorAll('form[action^="/"]').forEach(form => {
-      const action = form.getAttribute("action");
-      if (!action.startsWith(base + "/")) {
-        form.setAttribute("action", base + action);
-      }
-    });
-  })();
-</script>
 
 </body>
 </html>
