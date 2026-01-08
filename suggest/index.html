@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suggest a track — By Benovitch</title>
+  <meta name="description" content="Suggest a track for Benovitch playlists." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --text:#f4f5f7;
+      --muted:#b7bcc7;
+      --line:#232734;
+      --accent:#9ad6ff;
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:780px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(11,12,16,.72);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(35,39,52,.6);
+    }
+    .nav{display:flex;justify-content:space-between;align-items:center;gap:14px}
+    .brand{font-weight:800}
+    .brand small{color:var(--muted);font-weight:600;margin-left:6px}
+    .menu{display:flex;gap:10px;flex-wrap:wrap}
+    .menu a{
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--muted);
+    }
+    .menu a:hover{color:var(--text);background:rgba(255,255,255,.03)}
+
+    h1{
+      font-size:clamp(26px,4vw,40px);
+      margin:10px 0;
+      letter-spacing:-.3px;
+    }
+    .lead{color:var(--muted);max-width:72ch}
+
+    .card{
+      margin-top:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(35,39,52,.9);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+
+    form{display:grid;gap:14px}
+    label{font-size:13px;color:var(--muted)}
+    input, textarea, select{
+      width:100%;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-family:inherit;
+    }
+    textarea{min-height:140px;resize:vertical}
+    input:focus, textarea:focus, select:focus{
+      outline:none;
+      border-color:rgba(154,214,255,.45);
+      background:rgba(255,255,255,.06);
+    }
+
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:640px){.row{grid-template-columns:1fr}}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:14px;
+      border:1px solid rgba(154,214,255,.35);
+      background:linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
+      color:var(--text);
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn:hover{background:rgba(154,214,255,.22)}
+
+    .hint{font-size:13px;color:var(--muted)}
+    .pill{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(154,214,255,.30);
+      background:rgba(154,214,255,.07);
+      color:var(--text);
+      font-size:13px;
+      margin-top:10px;
+    }
+
+    footer{
+      border-top:1px solid rgba(35,39,52,.6);
+      margin-top:26px;
+      padding:22px 0 30px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footerLinks{display:flex;gap:12px;flex-wrap:wrap}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">By Benovitch <small>Music Business</small></a>
+    <nav class="menu">
+      <a href="/services">Services</a>
+      <a href="/pls">PLS</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Suggest a track</h1>
+    <p class="lead">
+      <strong>Submit a track suggestion for my Spotify playlists.</strong><br />
+      Please send a Spotify link + a short message. If it fits, I’ll consider it for PLS.
+    </p>
+    <div class="pill">No embeds — links only</div>
+
+    <div class="card">
+      <!--
+        ACTION À CONFIGURER :
+        - Formspree : action="https://formspree.io/f/xxxxxxx"
+        - Netlify Forms : ajouter netlify + name
+        - API perso : endpoint POST
+
+        La redirection vers /suggest/thanks.html est gérée par le JS en bas
+        (ça marche si tu utilises un endpoint CORS-friendly ; sinon tu peux mettre la redirection côté service).
+      -->
+      <form id="suggestForm" method="post" action="#">
+        <div class="row">
+          <div>
+            <label for="artist">Artist name</label>
+            <input id="artist" name="artist" required />
+          </div>
+          <div>
+            <label for="email">Email (optional)</label>
+            <input id="email" name="email" type="email" />
+          </div>
+        </div>
+
+        <div>
+          <label for="spotify">Spotify track link</label>
+          <input id="spotify" name="spotify" placeholder="https://open.spotify.com/track/..." required />
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="playlist">Target playlist (optional)</label>
+            <select id="playlist" name="playlist">
+              <option value="">— Select —</option>
+              <option>PLS Playlist 01</option>
+              <option>PLS Playlist 02</option>
+              <option>PLS Playlist 03</option>
+              <option>PLS Playlist 04</option>
+              <option>PLS Playlist 05</option>
+              <option>PLS Playlist 06</option>
+              <option>PLS Playlist 07</option>
+              <option>PLS Playlist 08</option>
+              <option>PLS Playlist 09</option>
+              <option>PLS Playlist 10</option>
+              <option>PLS Playlist 11</option>
+              <option>PLS Playlist 12</option>
+            </select>
+          </div>
+          <div>
+            <label for="release">Release date (optional)</label>
+            <input id="release" name="release" placeholder="YYYY-MM-DD" />
+          </div>
+        </div>
+
+        <div>
+          <label for="message">Short message</label>
+          <textarea id="message" name="message" placeholder="Genre, vibe, why it fits the playlist, etc."></textarea>
+        </div>
+
+        <!-- Honeypot anti-spam -->
+        <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+          <label for="company">Company</label>
+          <input id="company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button class="btn" type="submit">Send suggestion</button>
+
+        <p class="hint">
+          Tip: use the exact Spotify track link (not an album link) for faster review.
+        </p>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong style="color:#fff">By Benovitch</strong><br />
+    © <span id="year"></span> — All rights reserved.
+    <div class="footerLinks">
+      <a href="/legal/privacy.html">Privacy</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Option UX : rediriger vers /suggest/thanks.html
+  // Si ton endpoint ne supporte pas fetch/CORS, enlève ce script et utilise une redirection côté service.
+  const form = document.getElementById("suggestForm");
+  form.addEventListener("submit", async (e) => {
+    // Si action="#", on laisse pas faire (sinon page reload sans envoi).
+    if (form.getAttribute("action") === "#") {
+      e.preventDefault();
+      window.location.href = "/suggest/thanks.html";
+      return;
+    }
+
+    // Si action est configuré, on tente un envoi fetch pour pouvoir redirect.
+    // Si fetch échoue (CORS), on laisse le navigateur soumettre normalement.
+    try {
+      e.preventDefault();
+      const res = await fetch(form.action, {
+        method: form.method.toUpperCase(),
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
+      if (res.ok) window.location.href = "/suggest/thanks.html";
+      else form.submit();
+    } catch {
+      // fallback classique
+      form.submit();
+    }
+  });
+</script>
+</body>
+</html>
