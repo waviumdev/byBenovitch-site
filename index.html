@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>By Benovitch — Music business & services pour artistes</title>
+  <meta name="description" content="Mix, mastering, distribution, stratégie, visuels et accompagnement pour artistes indépendants. Playlists Spotify (PLS)." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="By Benovitch — Music business & services pour artistes" />
+  <meta property="og:description" content="Mix, mastering, distribution, stratégie et accompagnement. Playlists Spotify (PLS)." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#111318;
+      --text:#f4f5f7;
+      --muted:#b7bcc7;
+      --line:#232734;
+      --brand:#ffffff;
+      --accent:#9ad6ff; /* léger accent business */
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1080px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border:1px solid var(--line);
+      border-radius:999px; color:var(--muted);
+      background: rgba(255,255,255,.02);
+    }
+    .kbd{
+      font-size:12px; padding:2px 8px; border-radius:999px;
+      border:1px solid var(--line); color:var(--muted);
+      background: rgba(255,255,255,.02);
+    }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(11,12,16,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(35,39,52,.6);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:baseline; gap:10px;
+      font-weight:800; letter-spacing:.4px;
+    }
+    .brand small{color:var(--muted); font-weight:600; letter-spacing:.2px}
+    .menu{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+    .menu a{
+      padding:10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .menu a:hover{
+      color: var(--text);
+      border-color: rgba(35,39,52,.9);
+      background: rgba(255,255,255,.03);
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
+      border-color: rgba(154,214,255,.35);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 34px 0 10px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(35,39,52,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{
+      padding: 28px;
+    }
+    h1{
+      margin: 10px 0 10px;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -.4px;
+    }
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+    }
+    .heroCtas{display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px;}
+    .heroMeta{
+      padding: 22px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      justify-content:space-between;
+    }
+    .metaRow{
+      display:flex; flex-direction:column; gap:6px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(0,0,0,.10);
+    }
+    .metaRow strong{font-size:14px}
+    .metaRow span{color:var(--muted); font-size:13px}
+
+    /* Sections */
+    section{padding: 28px 0;}
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-bottom: 14px;
+    }
+    .sectionHead h2{
+      margin:0; font-size: 20px; letter-spacing: -.2px;
+    }
+    .sectionHead p{margin:0; color:var(--muted); max-width: 70ch; font-size: 14px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .service{
+      grid-column: span 6;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(255,255,255,.02);
+      display:flex; flex-direction:column; gap:10px;
+      min-height: 150px;
+    }
+    .serviceTop{display:flex; justify-content:space-between; gap:10px; align-items:flex-start;}
+    .service h3{margin:0; font-size: 16px}
+    .service p{margin:0; color:var(--muted); font-size: 14px}
+    .price{
+      font-size: 13px;
+      color: var(--text);
+      border: 1px solid rgba(154,214,255,.30);
+      background: rgba(154,214,255,.07);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+    .service a.more{
+      margin-top:auto;
+      color: var(--text);
+      font-weight: 650;
+      display:inline-flex; gap:10px; align-items:center;
+      padding-top: 6px;
+    }
+    .service a.more span{color:var(--muted); font-weight:600}
+    .service:hover{background: rgba(255,255,255,.03);}
+
+    /* PLS */
+    .plsCard{padding: 18px;}
+    .covers{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .cover{
+      aspect-ratio: 1 / 1;
+      border-radius: 14px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+      display:flex; align-items:center; justify-content:center;
+      color: var(--muted);
+      font-size: 12px;
+      overflow:hidden;
+    }
+    .cover img{width:100%; height:100%; object-fit:cover; display:block}
+
+    /* Process */
+    .step{
+      grid-column: span 4;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(255,255,255,.02);
+    }
+    .step strong{display:block; margin-bottom:6px}
+    .step p{margin:0; color:var(--muted); font-size:14px}
+
+    /* CTA */
+    .cta{
+      padding: 20px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta h2{margin:0; font-size: 18px}
+    .cta p{margin:0; color:var(--muted); max-width: 70ch; font-size: 14px}
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(35,39,52,.6);
+      padding: 22px 0 30px;
+      color: var(--muted);
+    }
+    .footerGrid{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .footerLinks{display:flex; gap:12px; flex-wrap:wrap;}
+    .footerLinks a{color: var(--muted); padding: 8px 10px; border-radius: 12px;}
+    .footerLinks a:hover{color: var(--text); background: rgba(255,255,255,.03);}
+
+    /* Responsive */
+    @media (max-width: 880px){
+      .heroGrid{grid-template-columns: 1fr;}
+      .covers{grid-template-columns: repeat(3, 1fr);}
+      .service{grid-column: span 12;}
+      .step{grid-column: span 12;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="By Benovitch, accueil">
+        By Benovitch <small>Music Business</small>
+      </a>
+
+      <nav class="menu" aria-label="Navigation">
+        <a href="/services">Services</a>
+        <a href="/pls">PLS</a>
+        <a href="/suggest">Suggestions</a>
+        <a class="btn primary" href="/contact">Demander un devis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap heroGrid">
+        <div class="card heroMain">
+          <div class="pill">
+            <span>Disponible</span>
+            <span class="kbd">Mix • Master • Distrib • Stratégie</span>
+          </div>
+
+          <h1>Music business &amp; services pour artistes indépendants</h1>
+
+          <p class="lead">
+            Mix, mastering, distribution, stratégie et accompagnement artistique.
+            Une approche concrète pour structurer et faire avancer ton projet.
+          </p>
+
+          <div class="heroCtas">
+            <a class="btn primary" href="/contact">Demander un devis</a>
+            <a class="btn" href="/pls">Playlists Spotify (PLS)</a>
+            <a class="btn" href="/services">Voir les services</a>
+          </div>
+        </div>
+
+        <aside class="card heroMeta" aria-label="Infos rapides">
+          <div class="metaRow">
+            <strong>Réponse rapide</strong>
+            <span>Contact direct + brief → retour avec une proposition.</span>
+          </div>
+          <div class="metaRow">
+            <strong>Tarifs transparents</strong>
+            <span>Des prix “à partir de” pour cadrer ton budget.</span>
+          </div>
+          <div class="metaRow">
+            <strong>PLS (Spotify)</strong>
+            <span>12 playlists — covers cliquables, sans embed.</span>
+          </div>
+          <div>
+            <a class="btn" href="/contact" style="width:100%">Écrire un message</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section>
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Services</h2>
+            <p>Choisis le service dont tu as besoin. Chaque page détaille le process, le livrable et le tarif plancher.</p>
+          </div>
+          <a class="btn" href="/services">Tout voir</a>
+        </div>
+
+        <div class="grid" role="list">
+          <!-- Mix -->
+          <article class="service" role="listitem">
+            <div class="serviceTop">
+              <div>
+                <h3>Mix by Benovitch</h3>
+                <p>Clarté, équilibre, intention — un mix prêt à performer.</p>
+              </div>
+              <div class="price">À partir de 40 €</div>
+            </div>
+            <a class="more" href="/services/mix.html">
+              <span>En savoir plus</span> →
+            </a>
+          </article>
+
+          <!-- Master -->
+          <article class="service" role="listitem">
+            <div class="serviceTop">
+              <div>
+                <h3>Master by Benovitch</h3>
+                <p>Un master propre, cohérent et exploitable sur toutes plateformes.</p>
+              </div>
+              <div class="price">Sur devis</div>
+            </div>
+            <a class="more" href="/services/master.html"><span>En savoir plus</span> →</a>
+          </article>
+
+          <!-- Distribution -->
+          <article class="service" role="listitem">
+            <div class="serviceTop">
+              <div>
+                <h3>Distrib by Benovitch</h3>
+                <p>Distribution annuelle + options. Transfert offert avec l’annuel.</p>
+              </div>
+              <div class="price">Dès 120 € / an</div>
+            </div>
+            <a class="more" href="/services/distrib.html"><span>En savoir plus</span> →</a>
+          </article>
+
+          <!-- Site -->
+          <article class="service" role="listitem">
+            <div class="serviceTop">
+              <div>
+                <h3>Site by Benovitch</h3>
+                <p>Site vitrine artiste : clair, rapide, propre (SEO + conversion).</p>
+              </div>
+              <div class="price">À partir de 200 €</div>
+            </div>
+            <a class="more" href="/services/site.html"><span>En savoir plus</span> →</a>
+          </article>
+
+          <!-- Consulting -->
+          <article class="service" role="listitem">
+            <div class="serviceTop">
+              <div>
+                <h3>Consulting by Benovitch</h3>
+                <p>Stratégie, plan d’action, positionnement, release, cohérence.</p>
+              </div>
+              <div class="price">Dès 40 € / h</div>
+            </div>
+            <a class="more" href="/services/consulting.html"><span>En savoir plus</span> →</a>
+          </article>
+
+          <!-- Cover -->
+          <article class="service" role="listitem">
+            <div class="serviceTop">
+              <div>
+                <h3>Cover (IA assistée)</h3>
+                <p>Pochette single/album : direction + exécution IA assistée.</p>
+              </div>
+              <div class="price">À partir de 50 €</div>
+            </div>
+            <a class="more" href="/services/cover.html"><span>En savoir plus</span> →</a>
+          </article>
+
+          <!-- Bio -->
+          <article class="service" role="listitem">
+            <div class="serviceTop">
+              <div>
+                <h3>Bio by Benovitch</h3>
+                <p>Biographie artiste : claire, crédible, adaptée à ton univers.</p>
+              </div>
+              <div class="price">À partir de 30 €</div>
+            </div>
+            <a class="more" href="/services/bio.html"><span>En savoir plus</span> →</a>
+          </article>
+
+          <!-- Playlists (business) -->
+          <article class="service" role="listitem">
+            <div class="serviceTop">
+              <div>
+                <h3>Playlists by Benovitch</h3>
+                <p>Approche playlists : curation, stratégie, cohérence, suivi.</p>
+              </div>
+              <div class="price">Sur devis</div>
+            </div>
+            <a class="more" href="/services/playlists.html"><span>En savoir plus</span> →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLS -->
+    <section>
+      <div class="wrap">
+        <div class="card plsCard">
+          <div class="sectionHead" style="margin-bottom:10px;">
+            <div>
+              <h2>Playlists Spotify (PLS)</h2>
+              <p>12 playlists. Tu cliques sur la cover → tu arrives sur Spotify (pas d’embed, pour éviter la limite 30s des comptes free).</p>
+            </div>
+            <a class="btn" href="/pls">Voir les 12 playlists</a>
+          </div>
+
+          <!-- Mini grille (placeholders) -->
+          <div class="covers" aria-label="Aperçu des playlists">
+            <!-- Remplace ces placeholders par tes images + liens Spotify -->
+            <a class="cover" href="/pls" aria-label="Playlist 1">
+              <span>Cover 1</span>
+            </a>
+            <a class="cover" href="/pls" aria-label="Playlist 2">
+              <span>Cover 2</span>
+            </a>
+            <a class="cover" href="/pls" aria-label="Playlist 3">
+              <span>Cover 3</span>
+            </a>
+            <a class="cover" href="/pls" aria-label="Playlist 4">
+              <span>Cover 4</span>
+            </a>
+            <a class="cover" href="/pls" aria-label="Playlist 5">
+              <span>Cover 5</span>
+            </a>
+            <a class="cover" href="/pls" aria-label="Playlist 6">
+              <span>Cover 6</span>
+            </a>
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="/suggest">Proposer un titre</a>
+            <a class="btn" href="/services/playlists.html">Découvrir l’offre “Playlists”</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section>
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Comment je travaille</h2>
+            <p>Simple, structuré, et orienté résultat — sans blabla inutile.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="step">
+            <strong>1) Analyse</strong>
+            <p>Comprendre ton projet, ton univers, tes objectifs et tes contraintes.</p>
+          </div>
+          <div class="step">
+            <strong>2) Plan</strong>
+            <p>Définir une direction et une méthode adaptée (son, visuel, distribution, stratégie).</p>
+          </div>
+          <div class="step">
+            <strong>3) Exécution</strong>
+            <p>Produire un livrable solide, puis itérer rapidement si besoin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section>
+      <div class="wrap">
+        <div class="card cta">
+          <div>
+            <h2>Parlons de ton projet</h2>
+            <p>Décris ce dont tu as besoin (lien, deadline, référence). Je te réponds avec une proposition claire.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" href="/contact">Demander un devis</a>
+            <a class="btn" href="/services">Voir les services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footerGrid">
+      <div>
+        <strong style="color:var(--text);">By Benovitch</strong>
+        <div style="font-size:13px; margin-top:6px;">© <span id="year"></span> — Tous droits réservés.</div>
+      </div>
+
+      <div class="footerLinks" aria-label="Liens légaux">
+        <a href="/legal/cgu.html">CGU</a>
+        <a href="/legal/cgv.html">CGV</a>
+        <a href="/legal/privacy.html">Confidentialité</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Année dynamique
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
