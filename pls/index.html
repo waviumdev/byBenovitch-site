@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLS — Playlists Spotify — By Benovitch</title>
+  <meta name="description" content="PLS : 12 playlists Spotify by Benovitch. Covers cliquables, sans embed (pas de limite 30s)." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --text:#f4f5f7;
+      --muted:#b7bcc7;
+      --line:#232734;
+      --accent:#9ad6ff;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1080px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(154,214,255,.10), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(154,214,255,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(35,39,52,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(11,12,16,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(35,39,52,.6);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+    .brand{display:flex; align-items:baseline; gap:10px; font-weight:800; letter-spacing:.4px;}
+    .brand small{color:var(--muted); font-weight:600;}
+    .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+    .menu a{
+      padding:10px 12px; border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .menu a:hover{
+      color: var(--text);
+      border-color: rgba(35,39,52,.9);
+      background: rgba(255,255,255,.03);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(154,214,255,.18), rgba(154,214,255,.06));
+      border-color: rgba(154,214,255,.35);
+    }
+
+    /* Head */
+    .head{padding: 26px 0 10px;}
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -.3px;
+    }
+    .lead{margin:0; color: var(--muted); max-width: 80ch; font-size: 15px;}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+
+    /* Grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .pl{
+      grid-column: span 3;
+      border-radius: 16px;
+      border: 1px solid rgba(35,39,52,.9);
+      background: rgba(255,255,255,.02);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+    }
+    .pl:hover{
+      background: rgba(255,255,255,.03);
+      border-color: rgba(154,214,255,.22);
+      transform: translateY(-1px);
+    }
+    .thumb{
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
+      display:flex; align-items:center; justify-content:center;
+      color: var(--muted);
+      font-size: 12px;
+      position:relative;
+    }
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+    .plBody{padding: 12px 12px 14px;}
+    .plTitle{margin:0; font-size: 14px; letter-spacing: -.1px;}
+    .plMeta{margin:6px 0 0; font-size: 12px; color: var(--muted);}
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(35,39,52,.6);
+      padding: 22px 0 30px;
+      color: var(--muted);
+      margin-top: 18px;
+    }
+    .footerGrid{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center;}
+    .footerLinks{display:flex; gap:12px; flex-wrap:wrap;}
+    .footerLinks a{color: var(--muted); padding: 8px 10px; border-radius: 12px;}
+    .footerLinks a:hover{color: var(--text); background: rgba(255,255,255,.03);}
+
+    @media (max-width: 1020px){
+      .pl{grid-column: span 4;}
+    }
+    @media (max-width: 740px){
+      .pl{grid-column: span 6;}
+    }
+    @media (max-width: 480px){
+      .pl{grid-column: span 12;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="By Benovitch, accueil">
+        By Benovitch <small>Music Business</small>
+      </a>
+      <nav class="menu" aria-label="Navigation">
+        <a href="/services">Services</a>
+        <a href="/pls">PLS</a>
+        <a href="/suggest">Suggestions</a>
+        <a class="btn primary" href="/contact">Demander un devis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap head">
+      <h1>PLS — Playlists Spotify</h1>
+      <p class="lead">
+        12 playlists sélectionnées. Clique sur une cover pour ouvrir la playlist sur Spotify.
+        (Pas d’embed pour éviter la limite 30s des comptes free.)
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="/suggest">Proposer un titre</a>
+        <a class="btn" href="/services/playlists.html">Offre “Playlists” (sur devis)</a>
+      </div>
+
+      <div class="grid" aria-label="Playlists">
+        <!-- ✅ Remplace href + img src + titres -->
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 1">
+          <div class="thumb">
+            <!-- Option A: image -->
+            <!-- <img src="/assets/pls/pl-01.jpg" alt="Cover playlist 1" /> -->
+            <span>Cover 01</span>
+          </div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 01</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 2">
+          <div class="thumb"><span>Cover 02</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 02</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 3">
+          <div class="thumb"><span>Cover 03</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 03</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 4">
+          <div class="thumb"><span>Cover 04</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 04</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 5">
+          <div class="thumb"><span>Cover 05</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 05</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 6">
+          <div class="thumb"><span>Cover 06</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 06</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 7">
+          <div class="thumb"><span>Cover 07</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 07</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 8">
+          <div class="thumb"><span>Cover 08</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 08</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 9">
+          <div class="thumb"><span>Cover 09</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 09</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 10">
+          <div class="thumb"><span>Cover 10</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 10</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 11">
+          <div class="thumb"><span>Cover 11</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 11</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+
+        <a class="pl" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Playlist 12">
+          <div class="thumb"><span>Cover 12</span></div>
+          <div class="plBody">
+            <p class="plTitle">PLS Playlist 12</p>
+            <p class="plMeta">Clique pour ouvrir sur Spotify</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footerGrid">
+      <div>
+        <strong style="color:var(--text);">By Benovitch</strong>
+        <div style="font-size:13px; margin-top:6px;">© <span id="year"></span> — Tous droits réservés.</div>
+      </div>
+
+      <div class="footerLinks" aria-label="Liens légaux">
+        <a href="/legal/cgu.html">CGU</a>
+        <a href="/legal/cgv.html">CGV</a>
+        <a href="/legal/privacy.html">Confidentialité</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
