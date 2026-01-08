@@ -145,34 +145,6 @@
   </style>
 </head>
 
-  <script>
-  (function () {
-    // Ne s'exécute que sur GitHub Pages
-    if (!location.hostname.endsWith("github.io")) return;
-
-    const parts = location.pathname.split("/").filter(Boolean);
-    if (parts.length === 0) return;
-
-    const repo = parts[0];        // byBenovitch-site
-    const base = "/" + repo;
-
-    // Corrige les liens <a href="/...">
-    document.querySelectorAll('a[href^="/"]').forEach(link => {
-      const href = link.getAttribute("href");
-      if (!href.startsWith(base + "/")) {
-        link.setAttribute("href", base + href);
-      }
-    });
-
-    // Corrige aussi les formulaires si besoin
-    document.querySelectorAll('form[action^="/"]').forEach(form => {
-      const action = form.getAttribute("action");
-      if (!action.startsWith(base + "/")) {
-        form.setAttribute("action", base + action);
-      }
-    });
-  })();
-</script>
 
 <body>
   <header>
@@ -335,5 +307,34 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+    <script>
+  (function () {
+    // Ne s'exécute que sur GitHub Pages
+    if (!location.hostname.endsWith("github.io")) return;
+
+    const parts = location.pathname.split("/").filter(Boolean);
+    if (parts.length === 0) return;
+
+    const repo = parts[0];        // byBenovitch-site
+    const base = "/" + repo;
+
+    // Corrige les liens <a href="/...">
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      const href = link.getAttribute("href");
+      if (!href.startsWith(base + "/")) {
+        link.setAttribute("href", base + href);
+      }
+    });
+
+    // Corrige aussi les formulaires si besoin
+    document.querySelectorAll('form[action^="/"]').forEach(form => {
+      const action = form.getAttribute("action");
+      if (!action.startsWith(base + "/")) {
+        form.setAttribute("action", base + action);
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
