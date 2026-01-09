@@ -36,7 +36,13 @@ function rewriteLinks(prefix) {
   });
 }
 
-
+function rewriteCSS(prefix) {
+  document.querySelectorAll('link[data-href]').forEach(link => {
+    const target = link.getAttribute('data-href');
+    if (!target) return;
+    link.setAttribute('href', prefix + target.replace(/^\//, ""));
+  });
+}
 
 function initHeaderUI() {
   const header = document.querySelector(".site-header");
@@ -61,6 +67,9 @@ function initFooterYear() {
 (async function boot() {
   const prefix = getBasePrefix();
 
+  // CSS en premier
+  rewriteCSS(prefix);
+
   await loadPartial("#site-header", `${prefix}partials/header.html`);
   await loadPartial("#site-footer", `${prefix}partials/footer.html`);
 
@@ -68,3 +77,4 @@ function initFooterYear() {
   initHeaderUI();
   initFooterYear();
 })();
+
