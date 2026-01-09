@@ -296,13 +296,29 @@ footer{
 <!-- SERVICES -->
 <section>
   <div class="wrap">
-    <h2 class="sectionTitle">Services</h2>
-    <p class="sectionDesc">
-      Clique sur un service pour voir le détail, les livrables et le cadre.
-    </p>
+    <!-- Titre + bouton (bonus "ultra pro") -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>
+        <h2 class="sectionTitle" style="margin-bottom:6px">Services</h2>
+        <p class="sectionDesc" style="margin:0">
+          Clique sur un service pour voir le détail, les livrables et le cadre.
+        </p>
+      </div>
+
+      <!-- Bonus : page catalogue -->
+      <a class="btn" href="services/">Voir tous les services</a>
+    </div>
+
+    <!-- Mini navigation par catégories -->
+    <div class="badges" style="margin-top:14px">
+      <a class="badge" href="#audio">Audio</a>
+      <a class="badge" href="#distribution">Distribution</a>
+      <a class="badge" href="#image">Image</a>
+      <a class="badge" href="#strategie">Stratégie</a>
+    </div>
 
     <!-- Audio & Production -->
-    <div class="groupTitle">Audio &amp; Production</div>
+    <div class="groupTitle" id="audio">Audio &amp; Production</div>
     <div class="grid">
       <a class="item" href="services/mix.html">
         <h3>Mix</h3>
@@ -318,7 +334,7 @@ footer{
     </div>
 
     <!-- Sortie & Distribution -->
-    <div class="groupTitle">Sortie &amp; Distribution</div>
+    <div class="groupTitle" id="distribution">Sortie &amp; Distribution</div>
     <div class="grid">
       <a class="item" href="services/distrib.html">
         <h3>Distribution</h3>
@@ -334,7 +350,7 @@ footer{
     </div>
 
     <!-- Image & Identité -->
-    <div class="groupTitle">Image &amp; Identité</div>
+    <div class="groupTitle" id="image">Image &amp; Identité</div>
     <div class="grid">
       <a class="item" href="services/site.html">
         <h3>Site vitrine</h3>
@@ -356,7 +372,7 @@ footer{
     </div>
 
     <!-- Stratégie & Visibilité -->
-    <div class="groupTitle">Stratégie &amp; Visibilité</div>
+    <div class="groupTitle" id="strategie">Stratégie &amp; Visibilité</div>
     <div class="grid">
       <a class="item" href="services/consulting.html">
         <h3>Consulting</h3>
@@ -373,6 +389,7 @@ footer{
 
   </div>
 </section>
+
 
 
 
