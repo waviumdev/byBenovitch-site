@@ -24,9 +24,26 @@ function rewriteLinks(prefix) {
   document.querySelectorAll("[data-href]").forEach(el => {
     const target = el.getAttribute("data-href");
     if (!target) return;
-    el.setAttribute("href", prefix + target.replace(/^\//, ""));
+
+    const url = prefix + target.replace(/^\//, "");
+
+    // Liens
+    if (el.tagName === "A") {
+      el.setAttribute("href", url);
+      return;
+    }
+
+    // Images
+    if (el.tagName === "IMG") {
+      el.setAttribute("src", url);
+      return;
+    }
+
+    // Fallback (si un autre élément utilise data-href)
+    el.setAttribute("href", url);
   });
 }
+
 
 function initHeaderUI() {
   const header = document.querySelector(".site-header");
