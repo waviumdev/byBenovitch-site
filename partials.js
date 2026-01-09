@@ -67,13 +67,11 @@ function initFooterYear() {
 (async function boot() {
   const prefix = getBasePrefix();
 
-  // CSS en premier
-  rewriteCSS(prefix);
-
   await loadPartial("#site-header", `${prefix}partials/header.html`);
   await loadPartial("#site-footer", `${prefix}partials/footer.html`);
 
   rewriteLinks(prefix);
+  rewriteSrc(prefix);     // ✅ ajoute ça
   initHeaderUI();
   initFooterYear();
 })();
