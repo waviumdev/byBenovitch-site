@@ -94,10 +94,11 @@ header{
   gap:12px;
 }
 .brandLogo{
-  height:28px;
+  height:40px;          /* taille desktop */
   width:auto;
   display:block;
 }
+
 .brandText{
   display:flex;
   flex-direction:column;
@@ -154,7 +155,7 @@ header{
 }
 
 @media(max-width:520px){
-  .brandLogo{height:24px}
+  .brandLogo{height:32px}
   .brandTitle{font-size:13px}
   .brandText small{display:none}
 }
