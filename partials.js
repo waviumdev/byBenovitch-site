@@ -27,22 +27,15 @@ function rewriteLinks(prefix) {
 
     const url = prefix + target.replace(/^\//, "");
 
-    // Liens
     if (el.tagName === "A") {
       el.setAttribute("href", url);
-      return;
     }
-
-    // Images
-    if (el.tagName === "IMG") {
+    else if (el.tagName === "IMG") {
       el.setAttribute("src", url);
-      return;
     }
-
-    // Fallback (si un autre élément utilise data-href)
-    el.setAttribute("href", url);
   });
 }
+
 
 
 function initHeaderUI() {
