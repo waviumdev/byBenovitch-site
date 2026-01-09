@@ -1,6 +1,6 @@
 function getBasePrefix() {
   const path = location.pathname;
-
+ 
   // Si on est à la racine ou sur une page racine
   if (path === "/" || path.split("/").filter(Boolean).length === 1) {
     return "";
