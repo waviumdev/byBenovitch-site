@@ -94,21 +94,33 @@ header{
   gap:12px;
 }
 .brandLogo{
-  height:40px;          /* taille desktop */
+  height:52px;   /* vrai logo size */
   width:auto;
   display:block;
 }
 
+
 .brandText{
   display:flex;
   flex-direction:column;
-  line-height:1.05;
-}
-.brandTitle{
-  font-weight:800;
-  font-size:14px;
+  justify-content:center;
+  line-height:1.1;
 }
 
+
+.brandTitle{
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.02em;
+}
+.brandText small{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.brandLink{
+  gap:18px;
+}
 /* Burger */
 .nav-toggle{
   display:none;
@@ -155,10 +167,9 @@ header{
 }
 
 @media(max-width:520px){
-  .brandLogo{height:32px}
-  .brandTitle{font-size:13px}
-  .brandText small{display:none}
+  .brandLogo{height:38px}
 }
+
 
 /* HERO */
 .hero{padding-top:20px}
